@@ -1,0 +1,10 @@
+.LetterSelect {
+    color: white;
+    font-size: 24px;
+
+
+    .selected {
+        background-color: yellow;
+    }
+
+}

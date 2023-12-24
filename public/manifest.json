@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Wordle Letter Maker",
+  "name": "Wordle Letter Maker",
   "icons": [
     {
       "src": "favicon.ico",
