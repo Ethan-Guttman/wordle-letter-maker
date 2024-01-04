@@ -1,10 +1,33 @@
 .LetterSelect {
     color: white;
-    font-size: 24px;
+    font-size: 36px;
+    width: 60%;
+    margin: 0 auto;
 
+    /* @keyframes hiddenWord {
+        from {background: none; color: white};
+        to {background: transparent; color: transparent};
+    } */
 
     .selected {
-        background-color: yellow;
+        background-color: black;
+        color: black;
+        border: dotted green 1px;
+        font-size:20px;
+    }
+
+    .word {
+        background: none;
+        color: white;
+        border: none;
+        font-size: 20px;
+
+        transition: color 1s ease-out 100ms;
+        /* transition: color 2s ease-out 100ms; */
+    }
+
+    .word:hover {
+        color: rgba(255, 255, 255, 0.2);
     }
 
 }

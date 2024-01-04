@@ -26,6 +26,7 @@ class LetterSelect extends React.Component {
     newHiddenWords[i] = !newHiddenWords[i];
     
     this.setState({hiddenWords: newHiddenWords});
+    console.log('toggled this ', i)
 
   }
 
@@ -58,7 +59,7 @@ class LetterSelect extends React.Component {
         <div className="LetterSelect">
             <br></br>
             {wordArray.length > 0 && wordArray.map((word, i) => 
-                (<button className={hiddenWords[i] ? 'selected' : ""} onClick={() => this.toggleHiddenWord(i)}>
+                (<button className={hiddenWords[i] ? 'selected' : "word"} onClick={() => this.toggleHiddenWord(i)}>
                     {word}
                 </button>))
             }

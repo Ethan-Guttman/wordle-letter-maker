@@ -1,0 +1,29 @@
+.wrapper {
+    width: 50%;
+    margin: 100px auto 0;
+    
+}
+
+h1 {
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+.letter {
+    color: white;
+    font-size: 20px;
+}
+
+.hidden {
+    color: transparent;
+    background-color: black;
+    transition: background-color 1s ease-out 100ms;
+}
+
+.hidden:hover {
+    background-color: rgb(42, 56, 43);
+    cursor: pointer;
+}

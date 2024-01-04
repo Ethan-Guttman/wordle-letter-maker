@@ -33,11 +33,11 @@ class CreationPage extends React.Component {
           
         </header>
         <div className="Letter-creation">
-          Simply type the letter here and press the button to confirm the letter before proceeding below
+          {!messageConfirmed && (<>Simply type the letter here and press the button to confirm the letter before proceeding below
           <br></br>
-          <textarea ref="letterTextArea" value={this.state.message} id="letterText" placeholder="" onChange={(event)=>{this.setState({ message: event.target.value })}}>
+          <textarea autofocus="autofocus" ref="letterTextArea" value={this.state.message} id="letterText" placeholder="" onChange={(event)=>{this.setState({ message: event.target.value })}}>
           </textarea>
-          <br></br>
+          <br></br></>)}
           {!messageConfirmed && (<button onClick={() => {this.setMessageConfirmed()}}>
             Confirm
           </button>)}

@@ -1,30 +1,61 @@
 import React from "react";
 import CryptoJS from "crypto-js";
+import './WordleLetter.css';
+import PopupWordle from './../components/PopupWordle'
 
 class WordleLetter extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log('here', window.location.pathname.split("/"))
-        let encrypted = window.location.pathname.split("/")[2];
-        console.log("encry", encrypted);
-        let encryptedUnUrled = encrypted.replace("bl03kBltq", '/');
-        let decrypted = CryptoJS.AES.decrypt(encryptedUnUrled, "fe248eq");
-        console.log("decrypt", decrypted);
+        // console.log('here', window.location.pathname.split("/"))
+        // let encrypted = window.location.pathname.split("/")[2];
+        // console.log("encry", encrypted);
+        // let encryptedUnUrled = encrypted.replace("bl03kBltq", '/');
+        // let decrypted = CryptoJS.AES.decrypt(encryptedUnUrled, "fe248eq");
+        // console.log("decrypt", decrypted);
 
 
         this.state = {
-            wordArray: [],
-            hiddenWords : []
+            wordArray: ["heartbeat", "soul", "static", "nah", "we", "go", "to,", "future"],
+            hiddenWords : [false, true, false, false, false, false, false, true],
+            activeWordle: -1
         }
 
     }
 
+    setWordleFound(i) {
+        const { hiddenWords } = this.state;
+        const update = hiddenWords;
+        update[i] = true;
+        this.setState({hiddenWords: update, activeWordle: -1});
+    }
+
+    setActiveWordle = (i) => {
+        this.setState({activeWordle: i});
+    }
+
     render() {
+        const { wordArray, hiddenWords, activeWordle} = this.state;
+
+        console.log(wordArray);
+
         return (
-        <>
-        <h1>Here</h1>
-        </>);
+        <div className="wrapper">
+            
+            <div className="letter">
+                {wordArray.map(function(word, index) {
+                    if (hiddenWords[index]) {
+                        return (<span onClick={() => this.setActiveWordle(index)} className="hidden">hidden&nbsp;</span>)
+                    } else {
+                        return (<span>{word}&nbsp;</span>)
+                    }
+                    
+                })}
+            </div>
+        {/* {wordArray.map((word, index) => ({hiddenWords[index] ? (<><h1>{word}</h1>&nbsp;</>) : (<h1>{word}&nbsp;</h1>)}))} */}
+        {/* {wordArray.map((word, index) => ({hiddenWords[index] == false && (<>{word}&nbsp;</>)) || (hiddenWords[index] (<><a>word</a>&nbsp;</>))})} */}
+        {activeWordle != -1 && (<PopupWordle word={wordArray[activeWordle]} setWordleFound={() => this.setWordleFound(activeWordle)} />)}
+        </div>);
     }
     
 }
