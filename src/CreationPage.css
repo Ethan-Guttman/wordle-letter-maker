@@ -28,12 +28,13 @@
 .Letter-creation {
   color: white;
   textarea {
-    background: transparent;
+    background: rgba(0,43,0,.4);
     outline-color: rgb(0, 43, 0);
     color: white;
     margin-top: 30px;
-    width:50%;
+    width:35%;
     height: 100%;
+    min-height: 100px;
     font-size: 24px;
     border: none;
   }

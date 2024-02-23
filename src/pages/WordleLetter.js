@@ -21,12 +21,14 @@ class WordleLetter extends React.Component {
             activeWordle: -1
         }
 
+        this.setActiveWordle = this.setActiveWordle.bind(this);
+
     }
 
-    setWordleFound(i) {
+    setWordleFound = (i) => {
         const { hiddenWords } = this.state;
         const update = hiddenWords;
-        update[i] = true;
+        update[i] = false;
         this.setState({hiddenWords: update, activeWordle: -1});
     }
 
@@ -37,15 +39,15 @@ class WordleLetter extends React.Component {
     render() {
         const { wordArray, hiddenWords, activeWordle} = this.state;
 
-        console.log(wordArray);
+        //console.log(wordArray);
 
         return (
         <div className="wrapper">
             
             <div className="letter">
-                {wordArray.map(function(word, index) {
+                {wordArray.map((word, index) => {
                     if (hiddenWords[index]) {
-                        return (<span onClick={() => this.setActiveWordle(index)} className="hidden">hidden&nbsp;</span>)
+                        return (<><span onClick={(e) => {this.setActiveWordle(index)}} className="hidden">hidden</span>&nbsp;</>)
                     } else {
                         return (<span>{word}&nbsp;</span>)
                     }
@@ -54,7 +56,7 @@ class WordleLetter extends React.Component {
             </div>
         {/* {wordArray.map((word, index) => ({hiddenWords[index] ? (<><h1>{word}</h1>&nbsp;</>) : (<h1>{word}&nbsp;</h1>)}))} */}
         {/* {wordArray.map((word, index) => ({hiddenWords[index] == false && (<>{word}&nbsp;</>)) || (hiddenWords[index] (<><a>word</a>&nbsp;</>))})} */}
-        {activeWordle != -1 && (<PopupWordle word={wordArray[activeWordle]} setWordleFound={() => this.setWordleFound(activeWordle)} />)}
+        {activeWordle !== -1 && (<PopupWordle word={wordArray[activeWordle]} index={activeWordle} setWordleFound={this.setWordleFound} />)}
         </div>);
     }
     

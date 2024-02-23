@@ -33,7 +33,7 @@ class CreationPage extends React.Component {
           
         </header>
         <div className="Letter-creation">
-          {!messageConfirmed && (<>Simply type the letter here and press the button to confirm the letter before proceeding below
+          {!messageConfirmed && (<>Simply type the letter here and press confirm
           <br></br>
           <textarea autofocus="autofocus" ref="letterTextArea" value={this.state.message} id="letterText" placeholder="" onChange={(event)=>{this.setState({ message: event.target.value })}}>
           </textarea>
@@ -45,7 +45,10 @@ class CreationPage extends React.Component {
 
 
         {message.length > 1 && messageConfirmed && (
-          <LetterSelect message={this.state.message} />)}
+          <div className="Letter-creation">
+            Select words to hide
+            <LetterSelect message={this.state.message} />
+          </div>)}
         
 
       </div>
